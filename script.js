@@ -1,5 +1,5 @@
 let generateRandomNumber = function(){
-    return Math.floor(Math.random() * 256).toString();
+    return Math.floor(Math.random() * 256);
 }
 
 let topA;
@@ -17,15 +17,12 @@ let createRGB = function(){
     bottomB = generateRandomNumber();
     bottomC = generateRandomNumber();
 
-    return "linear-gradient(rgb(" + topA + "," + topB + "," + topC + "),rgb(" 
-    + bottomA + "," + bottomB + "," + bottomC +"))";
+    return "linear-gradient(rgb(" + topA.toString() + "," + topB.toString() + "," + topC.toString() + "),rgb(" 
+    + bottomA.toString() + "," + bottomB.toString() + "," + bottomC.toString() +"))";
 }
 
 let changeFontColor = function(){
-    let rgbOne = Number(topA);
-    let rgbTwo = Number(topB);
-    let rgbThree = Number(topC);
-    let rgbAvg = (rgbOne + rgbTwo + rgbThree) / 3;
+    let rgbAvg = (topA + topB + topC) / 3;
 
     if(rgbAvg > 120){
         document.getElementById("text").style.color = "rgb(0,0,0)";
@@ -34,9 +31,25 @@ let changeFontColor = function(){
     }
 }
 
+let calculateHexValue = function(rgb){
+    return rgb.toString(16);
+}
+
+let createHexText = function(){
+    let a = calculateHexValue(topA);
+    let b = calculateHexValue(topB);
+    let c = calculateHexValue(topC);
+    let d = calculateHexValue(bottomA);
+    let e = calculateHexValue(bottomB);
+    let f = calculateHexValue(bottomC);
+    document.getElementById("hexValueTop").textContent = "#" + a + b + c;
+    document.getElementById("hexValueBottom").textContent = "#" + d + e + f;
+}
+
 let changeColor = function(){
     document.body.style.background = createRGB();
     changeFontColor();
+    createHexText();
 }
 
 document.getElementById("button").addEventListener("click", changeColor);
