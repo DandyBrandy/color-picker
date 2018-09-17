@@ -10,19 +10,24 @@ let bottomB;
 let bottomC;
 
 let createRGB = function(){
-    bottomA = generateRandomNumber();
-    bottomB = generateRandomNumber();
-    bottomC = generateRandomNumber();
     topA = generateRandomNumber();
     topB = generateRandomNumber();
     topC = generateRandomNumber();
+    bottomA = generateRandomNumber();
+    bottomB = generateRandomNumber();
+    bottomC = generateRandomNumber();
 
     return "linear-gradient(rgb(" + topA + "," + topB + "," + topC + "),rgb(" 
     + bottomA + "," + bottomB + "," + bottomC +"))";
 }
 
 let changeFontColor = function(){
-    if(Number(topA) > 150){
+    let rgbOne = Number(topA);
+    let rgbTwo = Number(topB);
+    let rgbThree = Number(topC);
+    let rgbAvg = (rgbOne + rgbTwo + rgbThree) / 3;
+
+    if(rgbAvg > 120){
         document.getElementById("text").style.color = "rgb(0,0,0)";
     } else {
         document.getElementById("text").style.color = "rgb(255,255,255)";
@@ -30,8 +35,8 @@ let changeFontColor = function(){
 }
 
 let changeColor = function(){
-    changeFontColor();
     document.body.style.background = createRGB();
+    changeFontColor();
 }
 
 document.getElementById("button").addEventListener("click", changeColor);
