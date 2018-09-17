@@ -1,6 +1,7 @@
 html, body, div {
     margin: 0;
     padding: 0;
+    color: rgb(255, 255, 255);
 }
 
 html, body {
@@ -13,6 +14,8 @@ body {
 
 button {
     padding: 15px 15px;
+    border: none;
+    color: rgb(255,255,255);
 }
 
 .container {
