@@ -26,8 +26,12 @@ let changeFontColor = function(){
 
     if(rgbAvg > 120){
         document.getElementById("text").style.color = "rgb(0,0,0)";
+        document.getElementById("hexValueTop").style.color = "rgb(0,0,0)";
+        document.getElementById("hexValueBottom").style.color = "rgb(0,0,0)";
     } else {
         document.getElementById("text").style.color = "rgb(255,255,255)";
+        document.getElementById("hexValueTop").style.color = "rgb(255,255,255)";
+        document.getElementById("hexValueBottom").style.color = "rgb(255,255,255)";
     }
 }
 
@@ -42,6 +46,7 @@ let createHexText = function(){
     let d = calculateHexValue(bottomA);
     let e = calculateHexValue(bottomB);
     let f = calculateHexValue(bottomC);
+
     document.getElementById("hexValueTop").textContent = "#" + a + b + c;
     document.getElementById("hexValueBottom").textContent = "#" + d + e + f;
 }
