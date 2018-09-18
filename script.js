@@ -36,7 +36,11 @@ let changeFontColor = function(){
 }
 
 let calculateHexValue = function(rgb){
-    return rgb.toString(16);
+    let rgbValue = rgb.toString(16);
+    if(rgbValue.length === 1){
+        rgbValue = "0" + rgbValue;
+    }
+    return rgbValue;
 }
 
 let createHexText = function(){
@@ -45,7 +49,7 @@ let createHexText = function(){
     let c = calculateHexValue(topC);
     let d = calculateHexValue(bottomA);
     let e = calculateHexValue(bottomB);
-    let f = calculateHexValue(bottomC);
+    let f = calculateHexValue(bottomC);    
 
     document.getElementById("hexValueTop").textContent = "#" + a + b + c;
     document.getElementById("hexValueBottom").textContent = "#" + d + e + f;
@@ -55,6 +59,8 @@ let changeColor = function(){
     document.body.style.background = createRGB();
     changeFontColor();
     createHexText();
+    document.getElementById("topButton").style.display = "inline-block";
+    document.getElementById("bottomButton").style.display = "inline-block";
 }
 
 document.getElementById("button").addEventListener("click", changeColor);
